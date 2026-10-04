@@ -1,6 +1,7 @@
 import numpy as np
 
-n=50
+n=10
+
 
 h_real=np.random.normal(0,1,n) #means,sd,value
 h_imag=np.random.normal(0,1,n) 
@@ -20,4 +21,10 @@ noise=noise_real+1j*noise_imag
 
 
 y = h * x + noise
-print("Received signal:",y)
+h_hat=y/x #zero forcing estimate
+
+error1=np.mean(np.abs(h_hat-h)**2)
+error2=np.mean(np.abs(h-h)**2)
+# print("Received signal:",y)
+print(error1)
+print(error2)
